@@ -1,9 +1,37 @@
 // Place all the styles related to the runaways controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.body{
+  width: 100%;
+}
 #myCanvas{
   background-color: black;
   border: 3px solid red;
+  margin-top: 10%;
+}
+.center{
+  text-align: center;
+ 
+}
+#disp{
+  display: none;
+  text-align: center;
   margin-top: 10px;
+}
+.difficult{
+  padding-top: 20px;
+  font-weight: 900;
+}
+.description{
+  margin: 20px;
+}
+.start{
+  text-align: center;
+  margin: 10%;
+}
+
+#can2{
+  background-color: black;
+  border: 3px solid red;
+  margin-top: 10%;
 }
