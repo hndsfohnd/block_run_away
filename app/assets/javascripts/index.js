@@ -1,5 +1,6 @@
 
 var canvas = document.getElementById("myCanvas");
+
 var ctx = canvas.getContext("2d");
 var x = canvas.width / 2;
 var y = canvas.height - 30;
@@ -40,8 +41,9 @@ function collisionDetection(){
           b.status = 0;
           score++;
           if (score == brickRowCount * brickColumnCount){
-            alert("YOU WIN, CONGRATULATIONS!!")
-            document.location.reload();
+            alert("クリアー！！次は少し難しくなるよ！")
+            document.getElementById("disp").style.display="block";
+            clearInterval(interval);
           }
         }
       }
@@ -164,7 +166,7 @@ function keyUpHndler(e){
 function mouseMoveHndler(e){
   var relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width){
-    hx = relativeX - (hx + 28) / 2;
+    hx = relativeX - (hx + 28) / 2 
   }
 }
 
