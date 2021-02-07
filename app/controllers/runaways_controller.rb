@@ -8,4 +8,7 @@ class RunawaysController < ApplicationController
   def difficult1
   end
 
+  def difficult3
+  end
 end
+

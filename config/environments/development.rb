@@ -47,6 +47,7 @@ Rails.application.configure do
   config.assets.precompile += ['javascritps/index.js']
   config.assets.precompile += ['difficult2.js']
   config.assets.precompile += ['javascritps/difficult2.js']
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

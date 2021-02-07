@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get 'difficult1'   
       get 'difficult2' 
+      get 'difficult3'
     end 
   end
 end

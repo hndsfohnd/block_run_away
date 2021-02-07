@@ -1,15 +1,23 @@
 
-var canvas = document.getElementById("can2");
+var canvas = document.getElementById("can3");
 
 var ctx = canvas.getContext("2d");
+
 var x = canvas.width / 2;
 var y = canvas.height - 30;
+var v = canvas.width -100;
+var w = canvas.height -150;
 var y2 = canvas.height - 30;
+
+
 var hx = canvas.width / 3;
 var hy = canvas.height -38;
 var dx =2;
 var dy = -2;
+var ddx = 1;
+var ddy = -1;
 var ballRadius = 10;
+var ballRadius2 = 10
 var humanX = (canvas.width - 20)
 var rightPresed = false;
 var leftPresed = false;
@@ -39,9 +47,9 @@ function collisionDetection(){
       if (b.status == 1) {
         if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight){
           dy = -dy;
-          b.status = 0;
-          score = score + 2;
-          if (175 == score){
+          b.status = 2 
+          score = score + 3;
+          if (1000 == score){
             alert("クリアー、次は結構難しくなるよ〜！")
             document.getElementById("disp").style.display="block";
             clearInterval(interval);
@@ -60,17 +68,24 @@ function drawBall(){
   ctx.closePath();
 }
 
+function drawBall2(){
+  ctx.beginPath();
+  ctx.arc(v, w, ballRadius2, 20, Math.PI * 2 );
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+  ctx.closePath();
+}
 
 
 function drawhuman(){
   ctx.beginPath();
-  ctx.strokeStyle = 'white';//　線の色調整
+  ctx.strokeStyle = "red";//　線の色調整
   ctx.lineWidth = 2;//　線の太さ調整
   ctx.arc(hx+18, hy+8, 8, 0, Math.PI * 2, false);
   ctx.stroke();
 //　線を書く（手の部分）
   ctx.beginPath();
-  ctx.strokeStyle = 'white';
+  ctx.strokeStyle = 'red';
   ctx.moveTo(hx+8, hy+26);
   ctx.lineTo(hx+18, hy+18);
   ctx.lineTo(hx+28, hy+26);
@@ -106,6 +121,13 @@ function drawBricks(){
         ctx.fill();
         ctx.closePath();
       }
+      else if(bricks[c][r].status == 2){
+
+        ctx.beginPath();
+        ctx.rect(brickX, brickY, brickWidth, brickHeight);
+        ctx.fillStyle = "red";
+        ctx.fill();
+      }
     }
   }
 }
@@ -119,17 +141,26 @@ function drawScore(){
 function draw(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawhuman();
-  drawBricks()
+  drawBricks();
   drawBall();
+  drawBall2();
   collisionDetection();
   drawScore();
-  
   if (y + dy > canvas.height - ballRadius | y + dy < ballRadius){
     dy = -dy;
   }
   if (x + dx > canvas.width - ballRadius | x + dx < ballRadius){
     dx = -dx;
   }
+  
+
+  if (y + ddy > canvas.height - ballRadius2 | w + ddy < ballRadius2){
+    ddy = -ddy;
+  }
+  if (x + ddx > canvas.width - ballRadius | x + ddx < ballRadius){
+    ddx = -ddx;
+  }
+
   if (x > hx && x < hx + 28){
     if(y > hy && y < hy +38){
       alert("GAME OVER");
@@ -145,6 +176,8 @@ function draw(){
   }
   x += dx;
   y += dy;
+  v += dx;
+  w += dy;
 }
 document.addEventListener("keydown", keyDownHndler, false);
 document.addEventListener("keyup", keyUpHndler, false);

@@ -22,9 +22,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.assets.precompile += ['index.js']
-  config.assets.precompile += ['javascritps/index.js']
-  config.assets.precompile += ['difficult2.js']
-  config.assets.precompile += ['javascritps/difficult2.js']
+
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
