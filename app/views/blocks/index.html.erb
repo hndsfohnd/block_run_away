@@ -1,0 +1,77 @@
+<div class="blockchain">
+  <%= form_with model:@block, local: true do |f| %>
+    <div class="new_block_create">
+      <div class="transactiondata">
+        <%= f.text_field :transactiondata %>
+      </div> 
+      <div class="beforehash">
+        <%= @block.beforehash %>
+      </div>
+      <div class="selfhash">
+        <%= f.text_field :selfhash %>
+      </div>
+      <div class="submit">
+        <%= f.submit %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<canvas id="canvas">
+</canvas>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
+  <script>
+    // ページの読み込みを待つ
+
+    window.addEventListener('load',main);
+      function main(){
+        //描画領域を変数に格納
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        //sceneを作成
+        const scene = new THREE.Scene();
+
+        //cameraを作成
+        const camera = new THREE.PerspectiveCamera(45, width / height, 1, 2000);
+        camera.position.set(0, 0, 1000);
+
+        //lightを作成
+        const light = new THREE.DirectionalLight(0xffffff, 1.5);
+        light.position.set(1, 1, 1);
+        scene.add(light);
+    
+        //mesh（物体）を作成
+        const geometry = new THREE.BoxGeometry(300, 300, 300);
+        const material = new THREE.MeshStandardMaterial({color: 808080});
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);  
+	
+
+        //レンダラーを作成
+        const renderer = new THREE.WebGLRenderer({
+	      canvas: document.querySelector('#canvas'),
+	      antialias: true,
+        });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+
+
+        //初期実行
+        tick();
+	
+        //実行するための関数
+        function tick(){
+	      //アニメーション処理
+      	mesh.rotation.y += 0.01;
+      	mesh.rotation.x += 0.01;
+	
+      	//レンダリング
+      	renderer.render(scene, camera);
+	
+      	//自分自身を呼び続ける
+      	requestAnimationFrame(tick);
+        }
+      }
+  </script>

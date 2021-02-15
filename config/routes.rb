@@ -7,6 +7,6 @@ Rails.application.routes.draw do
       get 'difficult3'
     end 
   end
-  resources :block, only: [:index, :new, :create]
+  resources :blocks, only: [:index, :new, :create]
     
 end
