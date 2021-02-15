@@ -1,5 +1,8 @@
-  <canvas id="canvas">
+<div class="blockchain">
+  
+</div>
 
+<canvas id="canvas">
 </canvas>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
@@ -34,8 +37,7 @@
         //レンダラーを作成
         const renderer = new THREE.WebGLRenderer({
 	      canvas: document.querySelector('#canvas'),
-        antialias: true,
-        alpha: true;
+	      antialias: true,
         });
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(width, height);
