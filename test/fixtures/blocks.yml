@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transactiondata: 
+  beforehash: MyString
+  selfhash: MyString
+
+two:
+  transactiondata: 
+  beforehash: MyString
+  selfhash: MyString
