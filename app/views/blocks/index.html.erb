@@ -1,17 +1,27 @@
 <div class="blockchain">
   <%= form_with model:@block, local: true do |f| %>
     <div class="new_block_create">
+
       <div class="transactiondata">
+        <%= f.label :transaction, 'データ'%>
         <%= f.text_field :transactiondata %>
       </div> 
+      
+
       <div class="beforehash">
-        <%= @block.beforehash %>
+        <%= f.label :beforehash, '前のハッシュ'%>
+          <% if @beforehash.present? %>
+            <%= @block.beforehash %>
+          <% else %>
+            <%= 0 %>
+          <% end %>
       </div>
       <div class="selfhash">
+        <%= f.label :selfhash, 'このブロックのハッシュ'%>
         <%= f.text_field :selfhash %>
       </div>
       <div class="submit">
-        <%= f.submit %>
+        <%= f.submit "ブロック作成" %>
       </div>
     </div>
   <% end %>
