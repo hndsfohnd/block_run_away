@@ -17,7 +17,7 @@ class BlocksController < ApplicationController
 
   private
     def block_params
-      params.require(:block).permit(:transactiondata)
+      params.require(:block).permit(:transactiondata) 
     end    
 
     def create_hash(block)
