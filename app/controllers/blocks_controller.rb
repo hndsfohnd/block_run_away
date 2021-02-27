@@ -1,6 +1,7 @@
 class BlocksController < ApplicationController
   def index
     @block = Block.new
+    @before
     
   end
 
@@ -8,6 +9,7 @@ class BlocksController < ApplicationController
     @block = Block.new(block_params)
     if @block.save
       create_hash(@block)
+      create_beforehash(@block)
       redirect_to blocks_path
     else
       render blocks_path
@@ -21,8 +23,15 @@ class BlocksController < ApplicationController
     end    
 
     def create_hash(block)
-      block.beforehash =  SecureRandom.hex(32)
+      block.selfhash =  SecureRandom.hex(32)
       block.save
+    end
+
+    def create_beforehash(block)
+      beforehash_array = Block.last(2).take(1)
+      block.beforehash = beforehash_array[0].selfhash
+      block.save
+
     end
 
 end

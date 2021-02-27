@@ -1,6 +1,3 @@
-
-
-
 <div class="blockchain">
   <%= form_with model:@block, local: true do |f| %>
     <div class="new_block_create">
@@ -10,10 +7,10 @@
         <%= f.text_field :transactiondata %>
       </div> 
       
-
       <div class="beforehash">
         <%= f.label :beforehash, '前のハッシュ'%>
           <% if @beforehash.present? %>
+          
             <%= @block.beforehash %>
           <% else %>
             <%= 0 %>
@@ -86,8 +83,6 @@
       //自分自身を呼び続ける
       requestAnimationFrame(tick);
       }
-
-
     }
    
     
