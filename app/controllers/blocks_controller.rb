@@ -1,7 +1,7 @@
 class BlocksController < ApplicationController
   def index
     @block = Block.new
-    @before
+    @last_block = Block.last
     
   end
 

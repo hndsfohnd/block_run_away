@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'blocks#index'
   resources :runaways, only: [:index] do
     collection do

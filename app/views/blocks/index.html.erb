@@ -8,10 +8,9 @@
       </div> 
       
       <div class="beforehash">
-        <%= f.label :beforehash, '前のハッシュ'%>
-          <% if @beforehash.present? %>
-          
-            <%= @block.beforehash %>
+        <%= f.label :beforehash, '前のハッシュ:'%>
+          <% if @last_block.present? %>
+            <%= @last_block.beforehash %>
           <% else %>
             <%= 0 %>
           <% end %>
