@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'blocks#index'
   resources :runaways, only: [:index] do
     collection do
@@ -8,6 +7,16 @@ Rails.application.routes.draw do
       get 'difficult3'
     end 
   end
+
   resources :blocks,only: [:index, :new, :create]
-    
+ 
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  }
+  devise_scope :user do
+    get "signup", :to => "users/registrations#new"
+    get "login", :to => "users/sessions#new"
+    get "logout", :to => "users/sessions#destroy"
+  end
 end
