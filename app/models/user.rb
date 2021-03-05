@@ -10,4 +10,7 @@ class User < ApplicationRecord
 
   has_many :possive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
 
+  def following?(user)
+    following.include?(user)
+  end
 end
