@@ -1,0 +1,15 @@
+<%= current_user.id%>
+<div class="follower"> フォロー</div>
+  <% @user.following.each do |follow| %>
+    <div> 
+      <%= follow.email %><%= "(相互フォロー)" if @user.follower.include?(follow)%>
+    </div>
+  <% end %>
+
+<div class="follower"> フォロワー</div>
+  <% @user.follower.each do |follower| %>
+    <div> 
+      <%= follower.email %>
+    </div>
+  <% end %>
+

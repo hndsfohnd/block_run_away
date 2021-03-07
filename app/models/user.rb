@@ -9,8 +9,15 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships
 
   has_many :possive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
+  has_many :follower, through: :possive_relationships
+
+  has_one_attached :image
 
   def following?(user)
-    following.include?(user)
+    self.following.include?(user)
+  end
+
+  def follower?(user)
+    follower.include?(user)
   end
 end
