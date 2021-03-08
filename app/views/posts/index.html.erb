@@ -1,0 +1,18 @@
+
+<%= link_to "登録へ", new_post_path %>
+
+<div class="block">
+  <% @posts.each do |p|%>
+    <%= p.pant%>
+    <%= p.outer%>
+  <% end %>
+  <% @posts.each do |p|%>
+  <%= p.user.email %>
+    <% p.images.attached? %>
+      <div>
+      <% p.images.each do |image| %>
+        <%= link_to image_tag(image.variant(resize:'100x100').processed), post_path(p.id) %>
+      <% end %>
+      </div>
+  <% end %>
+</div>

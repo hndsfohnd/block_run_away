@@ -1,0 +1,7 @@
+<%= form_with model: @post, local: true  do |form| %>
+  <%= form.file_field :images, multiple: true %><br>
+  <%= form.text_field :outer %><br>
+  <%= form.text_field :pant %><br>
+  <%= form.text_field :hut %><br>
+  <%= form.submit %>
+<% end %>

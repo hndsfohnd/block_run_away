@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :possive_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :follower, through: :possive_relationships
 
-  has_one_attached :image
+
+  has_many :posts
 
   def following?(user)
     self.following.include?(user)
