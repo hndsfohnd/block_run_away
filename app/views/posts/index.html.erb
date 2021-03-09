@@ -9,7 +9,7 @@
   <% @posts.each do |p|%>
   <%= p.user.email %>
     <% p.images.attached? %>
-      <div>
+      <div> 
       <% p.images.each do |image| %>
         <%= link_to image_tag(image.variant(resize:'100x100').processed), post_path(p.id) %>
       <% end %>
